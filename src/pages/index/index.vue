@@ -1,7 +1,7 @@
 <template>
   <view class="index-container">
     <!-- 店铺信息 -->
-    <shop-info :info="shopInfo"></shop-info>
+    <shop-info :info="shopInfo" />
     <!-- 轮播广告 -->
     <view class="banner-wrap">
       <swiper
@@ -17,38 +17,33 @@
           :key="index"
           @click="handleBannerClick(item)"
         >
-          <image
-            class="swiper-image"
-            :src="item.image"
-            mode="aspectFill"
-          ></image>
+          <image class="swiper-image" :src="item.image" mode="aspectFill" />
         </swiper-item>
       </swiper>
     </view>
     <!-- 菜品分类 -->
-    <category-list
-      :list="categoryList"
-      @select="handleCategorySelect"
-    ></category-list>
+    <category-list :list="categoryList" @select="handleCategorySelect" />
 
     <!-- 商家列表 -->
-    <merchant-list
-      :list="merchantListData"
-      @click="handleMerchantClick"
-    ></merchant-list>
+    <merchant-list :list="merchantListData" @click="handleMerchantClick" />
   </view>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
-// import ShopInfo from '@/components/shop-info/shop-info.vue'
-// import CategoryList from '@/components/category-list/category-list.vue'
+// ✅ 从 uni-app 导入页面生命周期 onLoad
+// import { onLoad } from '@dcloudio/uni-app'
+import { getShopInfo, getBannerList, getCategoryList } from '@/common/request/api'
+import ShopInfo from '@/components/shop-info/shop-info.vue'
+import CategoryList from '@/components/category-list/category-list.vue'
 import MerchantList from '@/components/merchant-list/merchant-list.vue'
 // 响应式数据
 const shopInfo = ref({})
 const bannerList = ref([])
 const categoryList = ref([])
 const merchantListData = ref([])
+
+
 
 // 生命周期：获取首页数据
 onMounted(async () => {
@@ -61,15 +56,15 @@ onMounted(async () => {
     };
 
     bannerList.value = [
-      { image: 'https://636c-cloud1-0g2dwdaj8664045e-1348873337.tcb.qcloud.la/images/banner/banner1.jpg?sign=76488b48ab713568067bf2eca0db98b3&t=1774328743', link: '' },
-      { image: 'https://636c-cloud1-0g2dwdaj8664045e-1348873337.tcb.qcloud.la/images/banner/banner2.jpg?sign=4c0febf7e14fe4f92f78b447a146a8a8&t=1774328834', link: '' }
+      { image: 'https://thumbnail0.baidupcs.com/thumbnail/c291a0460oa3060fb009db5ec7e894f1?fid=121420358-250528-905529882891823&time=1774332000&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-e%2BLxhVg5o2y9R3p%2FwFf5qf0Vg0s%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=8832952150313502714&dp-callid=0&file_type=0&size=c710_u400&quality=100&vuk=-&ft=video', link: '' },
+      { image: 'https://thumbnail0.baidupcs.com/thumbnail/51d899a4cs30cdba098b00b5a0bfd3cb?fid=121420358-250528-37519512663804&time=1774332000&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-ztIa6uL1U1JzhcNPUtkNBBwGw%2BA%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=8833064514411396667&dp-callid=0&file_type=0&size=c710_u400&quality=100&vuk=-&ft=video', link: '' }
     ];
 
     categoryList.value = [
-      { id: 1, name: '热销推荐', icon: 'https://636c-cloud1-0g2dwdaj8664045e-1348873337.tcb.qcloud.la/images/category/1.png?sign=51c9514a236b33f8a52b9a351a1ca79f&t=1774328975' },
-      { id: 2, name: '主食', icon: 'https://636c-cloud1-0g2dwdaj8664045e-1348873337.tcb.qcloud.la/images/category/2.png?sign=b37fd9d739e02612ed7b9c016c04277a&t=1774328990' },
-      { id: 3, name: '小吃', icon: 'https://636c-cloud1-0g2dwdaj8664045e-1348873337.tcb.qcloud.la/images/category/3.png?sign=ba78434647eb0265ee7b2ba7d0684813&t=1774328999' },
-      { id: 4, name: '饮品', icon: 'https://636c-cloud1-0g2dwdaj8664045e-1348873337.tcb.qcloud.la/images/category/4.png?sign=ab351e8b2cf3285736cd457b980de9a4&t=1774329010' }
+      { id: 1, name: '热销推荐', icon: 'https://thumbnail0.baidupcs.com/thumbnail/4e4fb670ev860feb172fc89525c37b05?fid=121420358-250528-120146867008849&time=1774332000&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-SyTytvImHD3951%2BRabYbqojycw8%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=8833076587286666234&dp-callid=0&file_type=0&size=c710_u400&quality=100&vuk=-&ft=video' },
+      { id: 2, name: '主食', icon: 'https://thumbnail0.baidupcs.com/thumbnail/732383849m8875fbaf392722153d3dc4?fid=121420358-250528-838688766907837&time=1774332000&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-xYiVwIn7t8cBunnDSFto0YAtxf4%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=8833086231806415151&dp-callid=0&file_type=0&size=c710_u400&quality=100&vuk=-&ft=video' },
+      { id: 3, name: '小吃', icon: 'https://thumbnail0.baidupcs.com/thumbnail/ff83e545dic3380d2215d433c050633b?fid=121420358-250528-499280008807162&time=1774332000&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-b2G%2FJDGTE9Iab0E0jO4l66Fjq6I%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=8833096958884066574&dp-callid=0&file_type=0&size=c710_u400&quality=100&vuk=-&ft=video' },
+      { id: 4, name: '饮品', icon: 'https://thumbnail0.baidupcs.com/thumbnail/647d9e547u9a4d49c7d38d8e338baf41?fid=121420358-250528-1005859108980620&time=1774332000&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-X7w8VDajd%2BtBS3yO2XA3db2VR98%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=8833105195602797146&dp-callid=0&file_type=0&size=c710_u400&quality=100&vuk=-&ft=video' }
     ];
 
     merchantListData.value = [
@@ -132,16 +127,14 @@ onMounted(async () => {
     ];
 
     // 实际项目中应解开下方注释进行真实请求
-    /*
-    const [shopRes, bannerRes, categoryRes] = await Promise.all([
-      getShopInfo(),
-      getBannerList(),
-      getCategoryList()
-    ])
-    shopInfo.value = shopRes.data || shopInfo.value
-    bannerList.value = bannerRes.data || bannerList.value
-    categoryList.value = categoryRes.data || categoryList.value
-    */
+    // const [shopRes, bannerRes, categoryRes] = await Promise.all([
+    //   getShopInfo(),
+    //   getBannerList(),
+    //   getCategoryList()
+    // ])
+    // shopInfo.value = shopRes.data || shopInfo.value
+    // bannerList.value = bannerRes.data || bannerList.value
+    // categoryList.value = categoryRes.data || categoryList.value
   } catch (err) {
     uni.showToast({ title: '数据加载失败', icon: 'none' })
   }

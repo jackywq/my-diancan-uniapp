@@ -70,6 +70,7 @@
     "sass": "^1.69.5",
     "sharp": "^0.34.5",
     "svgo": "^4.0.1",
+    "terser": "^5.46.1",
     "vite": "5.2.8",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-image-optimizer": "^2.0.3"

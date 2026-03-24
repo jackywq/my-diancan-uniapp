@@ -6,7 +6,8 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'plugin:vue/vue3-essential'
+    'plugin:vue/vue3-essential',
+    'plugin:vue/vue3-recommended'
   ],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -24,8 +25,15 @@ module.exports = {
   },
   rules: {
     'vue/multi-word-component-names': 'off', // Uniapp pages typically use index.vue
-    'no-unused-vars': 'warn',
+    'no-unused-vars': 'off',
     'no-undef': 'error',
+    'vue/max-attributes-per-line': ['error', {
+      singleline: 3, // 单行最多允许3个属性
+      multiline: {
+        max: 1, // 多行模式下每个属性必须单独一行
+        allowFirstLine: false
+      }
+    }],
     'vue/no-undef-components': ['error', {
       ignorePatterns: [
         'view', 'text', 'image', 'navigator', 'scroll-view', 'swiper', 'swiper-item',
