@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
 import eslintPlugin from 'vite-plugin-eslint'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,7 +12,24 @@ export default defineConfig({
       include: ['src/**/*.js', 'src/**/*.vue', 'src/*.js', 'src/*.vue'],
       exclude: ['./node_modules/**'],
       cache: false
-    })
+    }),
+    ViteImageOptimizer({
+      png: {
+        quality: 80,
+      },
+      jpeg: {
+        quality: 80,
+      },
+      jpg: {
+        quality: 80,
+      },
+      webp: {
+        lossless: true,
+      },
+      svg: {
+        multipass: true,
+      },
+    }),
   ],
   css: {
     preprocessorOptions: {

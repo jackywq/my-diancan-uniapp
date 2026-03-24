@@ -41,12 +41,9 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { getShopInfo, getBannerList, getCategoryList } from '@/common/request/api/index'
-import ShopInfo from '@/components/shop-info/shop-info.vue'
-import CategoryList from '@/components/category-list/category-list.vue'
+// import ShopInfo from '@/components/shop-info/shop-info.vue'
+// import CategoryList from '@/components/category-list/category-list.vue'
 import MerchantList from '@/components/merchant-list/merchant-list.vue'
-import BannerImage1 from '../../static/images/banner/banner1.jpg'
-import BannerImage2 from '../../static/images/banner/banner2.jpg'
 // 响应式数据
 const shopInfo = ref({})
 const bannerList = ref([])
@@ -64,15 +61,15 @@ onMounted(async () => {
     };
 
     bannerList.value = [
-      { image: BannerImage1, link: '' },
-      { image: BannerImage2, link: '' }
+      { image: 'https://636c-cloud1-0g2dwdaj8664045e-1348873337.tcb.qcloud.la/images/banner/banner1.jpg?sign=76488b48ab713568067bf2eca0db98b3&t=1774328743', link: '' },
+      { image: 'https://636c-cloud1-0g2dwdaj8664045e-1348873337.tcb.qcloud.la/images/banner/banner2.jpg?sign=4c0febf7e14fe4f92f78b447a146a8a8&t=1774328834', link: '' }
     ];
 
     categoryList.value = [
-      { id: 1, name: '热销推荐', icon: '../../static/images/category/1.png' },
-      { id: 2, name: '主食', icon: '../../static/images/category/2.png' },
-      { id: 3, name: '小吃', icon: '../../static/images/category/3.png' },
-      { id: 4, name: '饮品', icon: '../../static/images/category/4.png' }
+      { id: 1, name: '热销推荐', icon: 'https://636c-cloud1-0g2dwdaj8664045e-1348873337.tcb.qcloud.la/images/category/1.png?sign=51c9514a236b33f8a52b9a351a1ca79f&t=1774328975' },
+      { id: 2, name: '主食', icon: 'https://636c-cloud1-0g2dwdaj8664045e-1348873337.tcb.qcloud.la/images/category/2.png?sign=b37fd9d739e02612ed7b9c016c04277a&t=1774328990' },
+      { id: 3, name: '小吃', icon: 'https://636c-cloud1-0g2dwdaj8664045e-1348873337.tcb.qcloud.la/images/category/3.png?sign=ba78434647eb0265ee7b2ba7d0684813&t=1774328999' },
+      { id: 4, name: '饮品', icon: 'https://636c-cloud1-0g2dwdaj8664045e-1348873337.tcb.qcloud.la/images/category/4.png?sign=ab351e8b2cf3285736cd457b980de9a4&t=1774329010' }
     ];
 
     merchantListData.value = [
@@ -151,7 +148,7 @@ onMounted(async () => {
 })
 
 // 分类选择事件
-const handleCategorySelect = (categoryId) => {
+const handleCategorySelect = () => {
   // 跳转到对应分类的点餐页面
   uni.switchTab({ url: `/pages/menu/menu` }) // 注意：tabBar 页面需要用 switchTab，如果带有参数通常通过 globalData 或 store 传递
 }
