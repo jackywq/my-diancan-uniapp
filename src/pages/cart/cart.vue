@@ -2,29 +2,55 @@
   <view class="cart-container">
     <view v-if="cartStore.cartList.length === 0" class="empty-cart">
       <text>购物车空空如也，快去点餐吧~</text>
-      <button class="go-menu-btn" @click="goToMenu">去点餐</button>
+      <button class="go-menu-btn" @click="goToMenu">
+        去点餐
+      </button>
     </view>
     <view v-else class="cart-content">
       <!-- 购物车列表 -->
       <view class="cart-list">
-        <view class="cart-item" v-for="item in cartStore.cartList" :key="item.id + '-' + item.spec">
-          <checkbox :checked="cartStore.selectedIds.includes(item.id)" @click="cartStore.toggleSelect(item.id)" color="#FF5A5F" />
-          <image class="food-img" :src="item.image || '/static/default-food.png'" mode="aspectFill"></image>
+        <view
+          v-for="item in cartStore.cartList"
+          :key="item.id + '-' + item.spec"
+          class="cart-item"
+        >
+          <checkbox
+            :checked="cartStore.selectedIds.includes(item.id)"
+            color="#FF5A5F"
+            @click="cartStore.toggleSelect(item.id)"
+          />
+          <image
+            class="food-img"
+            :src="item.image || '/static/default-food.png'"
+            mode="aspectFill"
+          />
           <view class="food-info">
-            <view class="food-name">{{ item.name }}</view>
-            <view class="food-spec" v-if="item.spec">{{ item.spec }}</view>
+            <view class="food-name">
+              {{ item.name }}
+            </view>
+            <view v-if="item.spec" class="food-spec">
+              {{ item.spec }}
+            </view>
             <view class="price-wrap">
-              <text class="price">¥{{ item.price }}</text>
+              <text class="price">
+                ¥{{ item.price }}
+              </text>
               <view class="count-ctrl">
-                <text class="btn minus" @click="handleMinus(item)">-</text>
-                <text class="count">{{ item.count }}</text>
-                <text class="btn plus" @click="handleAdd(item)">+</text>
+                <text class="btn minus" @click="handleMinus(item)">
+                  -
+                </text>
+                <text class="count">
+                  {{ item.count }}
+                </text>
+                <text class="btn plus" @click="handleAdd(item)">
+                  +
+                </text>
               </view>
             </view>
           </view>
         </view>
       </view>
-      
+
       <!-- 底部结算栏 -->
       <view class="bottom-bar">
         <view class="left">
@@ -34,10 +60,14 @@
           </label>
           <view class="total-info">
             <text>合计：</text>
-            <text class="total-price">¥{{ cartStore.totalPrice }}</text>
+            <text class="total-price">
+              ¥{{ cartStore.totalPrice }}
+            </text>
           </view>
         </view>
-        <button class="submit-btn" @click="handleSubmitOrder">去结算</button>
+        <button class="submit-btn" @click="handleSubmitOrder">
+          去结算
+        </button>
       </view>
     </view>
   </view>
@@ -107,7 +137,7 @@ const handleSubmitOrder = () => {
   }
 
   // 3. 跳转到订单确认页
-  uni.switchTab({
+  uni.navigateTo({
     url: `/pages/order/order`,
   });
 };
@@ -126,10 +156,10 @@ const handleSubmitOrder = () => {
     justify-content: center;
     padding-top: 200rpx;
     color: #999;
-    
+
     .go-menu-btn {
       margin-top: 40rpx;
-      background-color: #FF5A5F;
+      background-color: #ff5a5f;
       color: #fff;
       font-size: 28rpx;
       border-radius: 40rpx;
@@ -139,7 +169,7 @@ const handleSubmitOrder = () => {
 
   .cart-list {
     padding: 20rpx;
-    
+
     .cart-item {
       display: flex;
       align-items: center;
@@ -147,47 +177,47 @@ const handleSubmitOrder = () => {
       padding: 20rpx;
       border-radius: 16rpx;
       margin-bottom: 20rpx;
-      
+
       .food-img {
         width: 140rpx;
         height: 140rpx;
         border-radius: 8rpx;
         margin: 0 20rpx;
       }
-      
+
       .food-info {
         flex: 1;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         height: 140rpx;
-        
+
         .food-name {
           font-size: 30rpx;
           font-weight: bold;
           color: #333;
         }
-        
+
         .food-spec {
           font-size: 24rpx;
           color: #999;
         }
-        
+
         .price-wrap {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          
+
           .price {
-            color: #FF5A5F;
+            color: #ff5a5f;
             font-size: 32rpx;
             font-weight: bold;
           }
-          
+
           .count-ctrl {
             display: flex;
             align-items: center;
-            
+
             .btn {
               width: 48rpx;
               height: 48rpx;
@@ -198,7 +228,7 @@ const handleSubmitOrder = () => {
               font-size: 32rpx;
               color: #666;
             }
-            
+
             .count {
               margin: 0 20rpx;
               font-size: 28rpx;
@@ -223,13 +253,13 @@ const handleSubmitOrder = () => {
     justify-content: space-between;
     align-items: center;
     padding: 0 20rpx;
-    box-shadow: 0 -2rpx 10rpx rgba(0,0,0,0.05);
+    box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
     z-index: 99;
-    
+
     .left {
       display: flex;
       align-items: center;
-      
+
       .check-all {
         display: flex;
         align-items: center;
@@ -237,22 +267,22 @@ const handleSubmitOrder = () => {
         color: #333;
         margin-right: 30rpx;
       }
-      
+
       .total-info {
         font-size: 28rpx;
         color: #333;
-        
+
         .total-price {
-          color: #FF5A5F;
+          color: #ff5a5f;
           font-size: 36rpx;
           font-weight: bold;
         }
       }
     }
-    
+
     .submit-btn {
       margin: 0;
-      background-color: #FF5A5F;
+      background-color: #ff5a5f;
       color: #fff;
       font-size: 30rpx;
       border-radius: 50rpx;

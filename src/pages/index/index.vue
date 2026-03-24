@@ -50,7 +50,7 @@ onMounted(async () => {
   try {
     // 模拟数据，如果接口不通则使用默认数据
     shopInfo.value = {
-      name: 'Trae 示例餐厅',
+      name: '豪客来',
       score: '4.9',
       desc: '提供最优质的餐饮服务'
     };
@@ -143,7 +143,7 @@ onMounted(async () => {
 // 分类选择事件
 const handleCategorySelect = () => {
   // 跳转到对应分类的点餐页面
-  uni.switchTab({ url: `/pages/menu/menu` }) // 注意：tabBar 页面需要用 switchTab，如果带有参数通常通过 globalData 或 store 传递
+  uni.switchTab({ url: `/pages/menu/menu` })
 }
 
 // 轮播点击事件

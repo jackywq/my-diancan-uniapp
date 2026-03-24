@@ -1,3 +1,4 @@
+<!-- 菜品分类组件 -->
 <template>
   <view class="category-list">
     <view class="category-title">
@@ -5,17 +6,19 @@
     </view>
     <view class="category-grid">
       <view
-        class="category-item"
         v-for="item in list"
         :key="item.id"
+        class="category-item"
         @click="handleSelect(item.id)"
       >
         <image
           class="category-icon"
           :src="item.icon || '/static/default-icon.png'"
           mode="aspectFill"
-        ></image>
-        <text class="category-name">{{ item.name }}</text>
+        />
+        <text class="category-name">
+          {{ item.name }}
+        </text>
       </view>
     </view>
   </view>

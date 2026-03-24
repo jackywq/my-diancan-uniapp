@@ -1,8 +1,12 @@
 <template>
   <view class="shop-info">
     <view class="shop-header">
-      <text class="shop-name">{{ info.name || "默认店铺" }}</text>
-      <text class="shop-score">评分：{{ info.score || "5.0" }}</text>
+      <text class="shop-name">
+        {{ info.name || "默认店铺" }}
+      </text>
+      <text class="shop-score">
+        评分：{{ info.score || "5.0" }}
+      </text>
     </view>
     <view class="shop-desc">
       <text>{{ info.desc || "欢迎光临，本店提供美味佳肴。" }}</text>

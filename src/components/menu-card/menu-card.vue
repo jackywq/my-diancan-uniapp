@@ -1,12 +1,25 @@
+<!-- 菜单卡片组件 -->
 <template>
   <view class="menu-card">
-    <image class="food-image" :src="food.image || '/static/default-food.png'" mode="aspectFill"></image>
+    <image
+      class="food-image"
+      :src="food.image || '/static/default-food.png'"
+      mode="aspectFill"
+    />
     <view class="food-info">
-      <view class="food-name">{{ food.name }}</view>
-      <view class="food-sales">月售 {{ food.sales || 0 }}</view>
+      <view class="food-name">
+        {{ food.name }}
+      </view>
+      <view class="food-sales">
+        月售 {{ food.sales || 0 }}
+      </view>
       <view class="food-bottom">
-        <text class="food-price">¥{{ food.price }}</text>
-        <view class="add-btn" @click.stop="handleAdd">+</view>
+        <text class="food-price">
+          ¥{{ food.price }}
+        </text>
+        <view class="add-btn" @click.stop="handleAdd">
+          +
+        </view>
       </view>
     </view>
   </view>
@@ -66,7 +79,7 @@ const handleAdd = () => {
 
       .food-price {
         font-size: 32rpx;
-        color: #FF5A5F;
+        color: #ff5a5f;
         font-weight: bold;
       }
 
@@ -75,7 +88,7 @@ const handleAdd = () => {
         height: 48rpx;
         line-height: 44rpx;
         text-align: center;
-        background-color: #FF5A5F;
+        background-color: #ff5a5f;
         color: #fff;
         border-radius: 50%;
         font-size: 36rpx;

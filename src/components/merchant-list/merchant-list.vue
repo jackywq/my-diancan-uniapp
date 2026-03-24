@@ -1,14 +1,19 @@
+<!-- 商家列表组件 -->
 <template>
   <view class="merchant-list-container">
     <!-- 顶部筛选栏 -->
     <view class="filter-bar">
       <view class="filter-item active">
         <text>综合排序</text>
-        <text class="icon-down">▼</text>
+        <text class="icon-down">
+          ▼
+        </text>
       </view>
       <view class="filter-item">
         <text>全部美食</text>
-        <text class="icon-down">▼</text>
+        <text class="icon-down">
+          ▼
+        </text>
       </view>
       <view class="filter-item">
         <text>筛选</text>
@@ -18,30 +23,45 @@
     <!-- 商家列表 -->
     <view class="merchant-list">
       <view
-        class="merchant-item"
         v-for="(item, index) in list"
         :key="index"
+        class="merchant-item"
         @click="handleClick(item)"
       >
-        <image class="merchant-img" :src="item.image" mode="aspectFill"></image>
+        <image class="merchant-img" :src="item.image" mode="aspectFill" />
         <view class="merchant-info">
           <view class="info-top">
-            <text class="merchant-name">{{ item.name }}</text>
+            <text class="merchant-name">
+              {{ item.name }}
+            </text>
             <view class="tags">
-              <text class="tag tag-dian" v-if="item.tags?.includes('点')"
-                >点</text
+              <text
+                v-if="item.tags?.includes('点')"
+                class="tag tag-dian"
               >
-              <text class="tag tag-yu" v-if="item.tags?.includes('预')"
-                >预</text
+                点
+              </text>
+              <text
+                v-if="item.tags?.includes('预')"
+                class="tag tag-yu"
               >
-              <text class="tag tag-wai" v-if="item.tags?.includes('外')"
-                >外</text
+                预
+              </text>
+              <text
+                v-if="item.tags?.includes('外')"
+                class="tag tag-wai"
               >
+                外
+              </text>
             </view>
           </view>
           <view class="info-bottom">
-            <text class="merchant-desc">{{ item.desc }}</text>
-            <text class="merchant-distance">{{ item.distance }}</text>
+            <text class="merchant-desc">
+              {{ item.desc }}
+            </text>
+            <text class="merchant-distance">
+              {{ item.distance }}
+            </text>
           </view>
         </view>
       </view>

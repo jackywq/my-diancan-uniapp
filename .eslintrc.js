@@ -28,10 +28,11 @@ module.exports = {
     'no-unused-vars': 'off',
     'no-undef': 'error',
     'vue/max-attributes-per-line': ['error', {
-      singleline: 3, // 单行最多允许3个属性
+      singleline: {
+        max: 3
+      },
       multiline: {
-        max: 1, // 多行模式下每个属性必须单独一行
-        allowFirstLine: false
+        max: 1
       }
     }],
     'vue/no-undef-components': ['error', {
