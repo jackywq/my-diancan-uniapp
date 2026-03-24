@@ -22,15 +22,35 @@
       </view>
       <view class="order-status-list">
         <view class="status-item" @click="goToOrderList(1)">
+          <image
+            class="icon"
+            src="/static/images/order/wait_payment.svg"
+            mode="aspectFill"
+          />
           <view class="icon"> 待付款 </view>
         </view>
         <view class="status-item" @click="goToOrderList(2)">
+          <image
+            class="icon"
+            src="/static/images/order/in_progress.svg"
+            mode="aspectFill"
+          />
           <view class="icon"> 进行中 </view>
         </view>
         <view class="status-item" @click="goToOrderList(3)">
+          <image
+            class="icon"
+            src="/static/images/order/has_finished.svg"
+            mode="aspectFill"
+          />
           <view class="icon"> 已完成 </view>
         </view>
         <view class="status-item" @click="goToOrderList(4)">
+          <image
+            class="icon"
+            src="/static/images/order/refund.svg"
+            mode="aspectFill"
+          />
           <view class="icon"> 退款/售后 </view>
         </view>
       </view>
@@ -177,11 +197,16 @@ const handleMenuClick = (type) => {
       display: flex;
       flex-direction: column;
       align-items: center;
+      image {
+        width: 60rpx;
+        height: 60rpx;
+        margin-bottom: 12rpx;
+      }
 
       .icon {
         font-size: 28rpx;
         color: #333;
-        padding: 20rpx 0;
+        // padding: 20rpx 0;
       }
     }
   }
