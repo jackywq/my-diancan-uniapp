@@ -1,11 +1,5 @@
 <template>
   <view class="menu-container">
-    <!-- 头部/店铺信息 -->
-    <view class="header">
-      <text class="store-name"> 牧游点餐 </text>
-      <text class="store-desc"> 欢迎光临，美味即将呈现 </text>
-    </view>
-
     <!-- 主体内容：左侧分类，右侧菜品 -->
     <view class="main-content">
       <!-- 左侧侧边栏：分类 -->
@@ -56,7 +50,9 @@
                 {{ product.desc }}
               </text>
               <view class="product-bottom">
-                <text class="product-price"> ¥{{ product.price }} </text>
+                <text class="product-price">
+                  ¥{{ product.price }}
+                </text>
                 <!-- 加减按钮 -->
                 <view class="action-btn">
                   <view
@@ -94,8 +90,12 @@
         <text v-if="totalPrice > 0" class="total-price">
           ¥{{ totalPrice.toFixed(2) }}
         </text>
-        <text v-else class="empty-cart-text"> 未选购商品 </text>
-        <text class="delivery-fee"> 另需配送费¥2 </text>
+        <text v-else class="empty-cart-text">
+          未选购商品
+        </text>
+        <text class="delivery-fee">
+          另需配送费¥2
+        </text>
       </view>
       <view
         class="checkout-btn"
@@ -110,6 +110,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { onShow } from '@dcloudio/uni-app'
 
 // 模拟数据
 const categoryList = ref([
@@ -154,6 +155,20 @@ const currentCategoryIndex = ref(0)
 const leftScrollTop = ref(0)
 const rightScrollInto = ref('')
 const isScrollSync = ref(true)
+
+// 在页面显示时，检查是否有从其他页面传来的分类 ID
+onShow(() => {
+  const selectedCategoryId = uni.getStorageSync('selectedCategoryId')
+  if (selectedCategoryId) {
+    // 找到对应分类的索引
+    const index = categoryList.value.findIndex(c => c.id === selectedCategoryId)
+    if (index !== -1) {
+      selectCategory(index)
+    }
+    // 使用后清除，避免下次进入重复触发
+    uni.removeStorageSync('selectedCategoryId')
+  }
+})
 
 // 购物车状态（实际项目中建议放入 Pinia Store）
 const cart = ref({})
@@ -218,6 +233,7 @@ const goToCheckout = () => {
   flex-direction: column;
   height: 100vh;
   background-color: #f8f8f8;
+  box-sizing: border-box; /* 确保 padding 和 border 不会撑大容器 */
 }
 
 .header {
@@ -225,6 +241,7 @@ const goToCheckout = () => {
   background-color: #fff;
   z-index: 10;
   box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  flex-shrink: 0; /* 防止头部被压缩 */
   .store-name {
     font-size: 36rpx;
     font-weight: bold;
@@ -243,7 +260,10 @@ const goToCheckout = () => {
   flex: 1;
   display: flex;
   overflow: hidden;
-  margin-bottom: 110rpx; /* 留出底部购物车高度 */
+  margin-bottom: calc(
+    110rpx + env(safe-area-inset-bottom)
+  ); /* 留出底部购物车高度和安全区 */
+  padding-right: 10rpx; /* 为右侧可能出现的滚动条预留一点空间，防止紧贴边缘 */
 }
 
 /* 左侧分类 */
@@ -251,6 +271,16 @@ const goToCheckout = () => {
   width: 180rpx;
   background-color: #f5f5f5;
   height: 100%;
+  overflow-y: auto; /* 允许纵向滚动 */
+  -webkit-overflow-scrolling: touch; /* 增强 iOS 滚动体验 */
+
+  /* 隐藏左侧滚动条 */
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+    color: transparent;
+  }
 
   .category-item {
     padding: 30rpx 20rpx;
@@ -283,6 +313,23 @@ const goToCheckout = () => {
   flex: 1;
   background-color: #fff;
   height: 100%;
+  overflow-y: auto; /* 允许纵向滚动 */
+  -webkit-overflow-scrolling: touch; /* 增强 iOS 滚动体验 */
+
+  /* 自定义右侧滚动条样式 */
+  &::-webkit-scrollbar {
+    width: 8rpx; /* 设置滚动条的宽度 */
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10rpx;
+    background-color: #e0e0e0; /* 滚动条的颜色，浅灰色，不会太突兀 */
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
 
   .category-section {
     padding: 0 20rpx;
@@ -389,7 +436,7 @@ const goToCheckout = () => {
 /* 底部购物车 */
 .cart-bar {
   position: fixed;
-  bottom: 0;
+  bottom: var(--window-bottom, 0px);
   left: 0;
   right: 0;
   height: 110rpx;

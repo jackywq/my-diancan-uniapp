@@ -141,7 +141,9 @@ onMounted(async () => {
 })
 
 // 分类选择事件
-const handleCategorySelect = () => {
+const handleCategorySelect = (categoryId) => {
+  // 保存选中的分类 ID 到本地存储或者状态管理，以便 tabBar 页面读取
+  uni.setStorageSync('selectedCategoryId', categoryId)
   // 跳转到对应分类的点餐页面
   uni.switchTab({ url: `/pages/menu/menu` })
 }
