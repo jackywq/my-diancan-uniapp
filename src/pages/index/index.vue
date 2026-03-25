@@ -37,6 +37,13 @@ import { getShopInfo, getBannerList, getCategoryList } from '@/common/request/ap
 import ShopInfo from '@/components/shop-info/shop-info.vue'
 import CategoryList from '@/components/category-list/category-list.vue'
 import MerchantList from '@/components/merchant-list/merchant-list.vue'
+import hotFoodIcon from '@/static/images/classify/hot_food.svg'
+import fineFoodIcon from '@/static/images/classify/fine_food.svg'
+import mainFoodIcon from '@/static/images/classify/main_food.svg'
+import drinkIcon from '@/static/images/classify/drink.svg'
+import BannerImage1 from '@/static/images/banner/banner1.jpg'
+import BannerImage2 from '@/static/images/banner/banner2.jpg'
+
 // 响应式数据
 const shopInfo = ref({})
 const bannerList = ref([])
@@ -56,15 +63,15 @@ onMounted(async () => {
     };
 
     bannerList.value = [
-      { image: 'https://thumbnail0.baidupcs.com/thumbnail/c291a0460oa3060fb009db5ec7e894f1?fid=121420358-250528-905529882891823&time=1774332000&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-e%2BLxhVg5o2y9R3p%2FwFf5qf0Vg0s%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=8832952150313502714&dp-callid=0&file_type=0&size=c710_u400&quality=100&vuk=-&ft=video', link: '' },
-      { image: 'https://thumbnail0.baidupcs.com/thumbnail/51d899a4cs30cdba098b00b5a0bfd3cb?fid=121420358-250528-37519512663804&time=1774332000&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-ztIa6uL1U1JzhcNPUtkNBBwGw%2BA%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=8833064514411396667&dp-callid=0&file_type=0&size=c710_u400&quality=100&vuk=-&ft=video', link: '' }
+      { image: BannerImage1, link: '' },
+      { image: BannerImage2, link: '' }
     ];
 
     categoryList.value = [
-      { id: 1, name: '热销推荐', icon: 'https://thumbnail0.baidupcs.com/thumbnail/4e4fb670ev860feb172fc89525c37b05?fid=121420358-250528-120146867008849&time=1774332000&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-SyTytvImHD3951%2BRabYbqojycw8%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=8833076587286666234&dp-callid=0&file_type=0&size=c710_u400&quality=100&vuk=-&ft=video' },
-      { id: 2, name: '主食', icon: 'https://thumbnail0.baidupcs.com/thumbnail/732383849m8875fbaf392722153d3dc4?fid=121420358-250528-838688766907837&time=1774332000&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-xYiVwIn7t8cBunnDSFto0YAtxf4%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=8833086231806415151&dp-callid=0&file_type=0&size=c710_u400&quality=100&vuk=-&ft=video' },
-      { id: 3, name: '小吃', icon: 'https://thumbnail0.baidupcs.com/thumbnail/ff83e545dic3380d2215d433c050633b?fid=121420358-250528-499280008807162&time=1774332000&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-b2G%2FJDGTE9Iab0E0jO4l66Fjq6I%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=8833096958884066574&dp-callid=0&file_type=0&size=c710_u400&quality=100&vuk=-&ft=video' },
-      { id: 4, name: '饮品', icon: 'https://thumbnail0.baidupcs.com/thumbnail/647d9e547u9a4d49c7d38d8e338baf41?fid=121420358-250528-1005859108980620&time=1774332000&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-X7w8VDajd%2BtBS3yO2XA3db2VR98%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=8833105195602797146&dp-callid=0&file_type=0&size=c710_u400&quality=100&vuk=-&ft=video' }
+      { id: 1, name: '热销推荐', icon: hotFoodIcon },
+      { id: 2, name: '主食', icon: mainFoodIcon },
+      { id: 3, name: '小吃', icon: fineFoodIcon },
+      { id: 4, name: '饮品', icon: drinkIcon }
     ];
 
     merchantListData.value = [
