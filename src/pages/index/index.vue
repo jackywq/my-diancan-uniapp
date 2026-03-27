@@ -183,6 +183,7 @@ const handleMerchantClick = (item) => {
       .swiper-image {
         width: 100%;
         height: 100%;
+        aspect-ratio: 16/9; /* 固定宽高比：提高CLS布局偏移的稳定性 */
       }
     }
   }

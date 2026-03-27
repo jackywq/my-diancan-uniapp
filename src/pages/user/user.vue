@@ -6,18 +6,26 @@
         <image class="avatar" src="/static/logo.png" mode="aspectFill" />
       </view>
       <view class="info-wrap">
-        <text class="nickname"> 微信用户 </text>
-        <text class="phone"> 138****8888 </text>
+        <text class="nickname">
+          微信用户
+        </text>
+        <text class="phone">
+          138****8888
+        </text>
       </view>
     </view>
 
     <!-- 订单状态统计 -->
     <view class="order-section">
       <view class="section-header">
-        <text class="title"> 我的订单 </text>
+        <text class="title">
+          我的订单
+        </text>
         <view class="more-order" @click="goToOrderList(0)">
           <text>全部订单</text>
-          <text class="arrow"> > </text>
+          <text class="arrow">
+            >
+          </text>
         </view>
       </view>
       <view class="order-status-list">
@@ -27,7 +35,9 @@
             src="/static/images/order/wait_payment.svg"
             mode="aspectFill"
           />
-          <view class="icon"> 待付款 </view>
+          <view class="icon">
+            待付款
+          </view>
         </view>
         <view class="status-item" @click="goToOrderList(2)">
           <image
@@ -35,7 +45,9 @@
             src="/static/images/order/in_progress.svg"
             mode="aspectFill"
           />
-          <view class="icon"> 进行中 </view>
+          <view class="icon">
+            进行中
+          </view>
         </view>
         <view class="status-item" @click="goToOrderList(3)">
           <image
@@ -43,7 +55,9 @@
             src="/static/images/order/has_finished.svg"
             mode="aspectFill"
           />
-          <view class="icon"> 已完成 </view>
+          <view class="icon">
+            已完成
+          </view>
         </view>
         <view class="status-item" @click="goToOrderList(4)">
           <image
@@ -51,7 +65,9 @@
             src="/static/images/order/refund.svg"
             mode="aspectFill"
           />
-          <view class="icon"> 退款/售后 </view>
+          <view class="icon">
+            退款/售后
+          </view>
         </view>
       </view>
     </view>
@@ -60,31 +76,55 @@
     <view class="menu-list">
       <view class="menu-item" @click="handleMenuClick('address')">
         <view class="left">
-          <text class="icon"> 📍 </text>
-          <text class="text"> 地址管理 </text>
+          <text class="icon">
+            📍
+          </text>
+          <text class="text">
+            地址管理
+          </text>
         </view>
-        <text class="arrow"> > </text>
+        <text class="arrow">
+          >
+        </text>
       </view>
       <view class="menu-item" @click="handleMenuClick('coupon')">
         <view class="left">
-          <text class="icon"> 🎫 </text>
-          <text class="text"> 我的优惠券 </text>
+          <text class="icon">
+            🎫
+          </text>
+          <text class="text">
+            我的优惠券
+          </text>
         </view>
-        <text class="arrow"> > </text>
+        <text class="arrow">
+          >
+        </text>
       </view>
       <view class="menu-item" @click="handleMenuClick('service')">
         <view class="left">
-          <text class="icon"> 🎧 </text>
-          <text class="text"> 联系客服 </text>
+          <text class="icon">
+            🎧
+          </text>
+          <text class="text">
+            联系客服
+          </text>
         </view>
-        <text class="arrow"> > </text>
+        <text class="arrow">
+          >
+        </text>
       </view>
       <view class="menu-item" @click="handleMenuClick('about')">
         <view class="left">
-          <text class="icon"> ℹ️ </text>
-          <text class="text"> 关于我们 </text>
+          <text class="icon">
+            ℹ️
+          </text>
+          <text class="text">
+            关于我们
+          </text>
         </view>
-        <text class="arrow"> > </text>
+        <text class="arrow">
+          >
+        </text>
       </view>
     </view>
   </view>
