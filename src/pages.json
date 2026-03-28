@@ -37,26 +37,26 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "static/images/tabbar/home.svg",
-        "selectedIconPath": "static/images/tabbar/home-active.svg"
+        "iconPath": "static/images/tabbar/home.png",
+        "selectedIconPath": "static/images/tabbar/home-active.png"
       },
       {
         "pagePath": "pages/menu/menu",
         "text": "分类",
-        "iconPath": "static/images/tabbar/menu.svg",
-        "selectedIconPath": "static/images/tabbar/menu-active.svg"
+        "iconPath": "static/images/tabbar/menu.png",
+        "selectedIconPath": "static/images/tabbar/menu-active.png"
       },
       {
         "pagePath": "pages/cart/cart",
         "text": "购物车",
-        "iconPath": "static/images/tabbar/cart.svg",
-        "selectedIconPath": "static/images/tabbar/cart-active.svg"
+        "iconPath": "static/images/tabbar/cart.png",
+        "selectedIconPath": "static/images/tabbar/cart-active.png"
       },
       {
         "pagePath": "pages/user/user",
         "text": "我的",
-        "iconPath": "static/images/tabbar/user.svg",
-        "selectedIconPath": "static/images/tabbar/user-active.svg"
+        "iconPath": "static/images/tabbar/user.png",
+        "selectedIconPath": "static/images/tabbar/user-active.png"
       }
     ]
   },
